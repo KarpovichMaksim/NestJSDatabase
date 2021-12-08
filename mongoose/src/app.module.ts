@@ -5,7 +5,14 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), CatsModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/test', {
+      connectionFactory: (connection) => {
+        connection.plugin(require('mongoose-autopopulate'));
+        return connection;
+      },
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
