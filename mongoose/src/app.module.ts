@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CatsModule } from './cats/cats.module';
         return connection;
       },
     }),
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
